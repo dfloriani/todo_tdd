@@ -58,7 +58,6 @@ class ItemValidationTest(FunctionalTest):
         self.get_item_input_box().send_keys(Keys.ENTER)
 
         # She sees a helpful error message
-        print(self.browser.page_source)
         self.wait_for(
             lambda: self.assertEqual(
                 self.browser.find_element(By.CSS_SELECTOR, ".has-error").text,
