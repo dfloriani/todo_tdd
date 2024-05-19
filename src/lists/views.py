@@ -18,7 +18,10 @@ def new_list(request):
 
 
 def view_list(request, list_id):
-    list_ = List.objects.get(id=list_id)
+    try:
+        list_ = List.objects.get(id=list_id)
+    except List.DoesNotExist:
+        list_ = None
     form = ExistingListItemForm(for_list=list_)
     if request.method == 'POST':
         form = ExistingListItemForm(for_list=list_, data=request.POST)
