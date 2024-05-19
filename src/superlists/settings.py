@@ -47,6 +47,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lists',
+    'accounts',
+]
+
+AUTH_USER_MODEL = 'accounts.ListUser'
+AUTHENTICATION_BACKENDS = [
+    'accounts.authentication.PasswordlessAuthenticationBackend',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +150,11 @@ LOGGING = {
         "root": {"handlers": ["console"], "level": "INFO"},
     },
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'dfloriani@proton.me'
+EMAIL_HOST = '127.0.0.1'
+EMAIL_HOST_USER = 'dfloriani@proton.me'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_PORT = 1025
+EMAIL_USE_TLS = True
