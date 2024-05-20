@@ -6,9 +6,6 @@ User = get_user_model()
 
 
 class AuthenticateTest(TestCase):
-    def authenticate(self, uid):
-        pass
-
     def test_returns_None_if_no_such_token(self):
         result = PasswordlessAuthenticationBackend().authenticate(
             'no-such-token'

@@ -154,11 +154,13 @@ LOGGING = {
     },
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = '127.0.0.1'
-EMAIL_HOST_USER = 'dfloriani@proton.me'
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
-EMAIL_PORT = 1025
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
+
+# EMAIL_HOST = '127.0.0.1'
+# EMAIL_HOST_USER = 'dfloriani@proton.me'
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+# EMAIL_PORT = 1025
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
