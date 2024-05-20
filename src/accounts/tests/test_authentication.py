@@ -6,6 +6,8 @@ User = get_user_model()
 
 
 class AuthenticateTest(TestCase):
+    def authenticate(self, uid):
+        pass
 
     def test_returns_None_if_no_such_token(self):
         result = PasswordlessAuthenticationBackend().authenticate(
@@ -30,7 +32,6 @@ class AuthenticateTest(TestCase):
         self.assertEqual(user, existing_user)
 
 class GetUserTest(TestCase):
-
     def test_gets_user_by_email(self):
         User.objects.create(email='another@example.com')
         desired_user = User.objects.create(email='edith@example.com')

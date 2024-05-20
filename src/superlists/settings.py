@@ -14,8 +14,10 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__name__).resolve().parent.parent
 
+EMAIL_SSL_CERTFILE = os.path.join(BASE_DIR, 'cert.pem')
+EMAIL_SSL_KEYFILE = os.path.join(BASE_DIR, 'key.pem')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -153,9 +155,10 @@ LOGGING = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'dfloriani@proton.me'
+
 EMAIL_HOST = '127.0.0.1'
 EMAIL_HOST_USER = 'dfloriani@proton.me'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 EMAIL_PORT = 1025
 EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
