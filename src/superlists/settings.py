@@ -164,3 +164,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
 # EMAIL_PORT = 1025
 # EMAIL_USE_TLS = True
 # EMAIL_USE_SSL = False
+
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'

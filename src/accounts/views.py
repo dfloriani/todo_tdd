@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.contrib import messages, auth
 from accounts.models import Token
 from django.urls import reverse
+from accounts.authentication import PasswordlessAuthenticationBackend
 
 def send_login_email(request):
     email = request.POST['email']
@@ -24,7 +25,8 @@ def send_login_email(request):
     return redirect('/')
 
 def login(request):
-    user = auth.authenticate(uid=request.GET.get('token'))
+    token_uid = request.GET.get('token')
+    user = PasswordlessAuthenticationBackend().authenticate(token_uid)
     if user:
         auth.login(request, user)
     return redirect('/')

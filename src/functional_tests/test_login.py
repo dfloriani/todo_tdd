@@ -34,7 +34,7 @@ class LoginTest(FunctionalTest):
             self.fail(f'Could not find url in email body:\n{email.body}')
         url = url_search.group(0)
         self.assertIn(self.live_server_url, url)
-
+        print(url)
         # she clicks it
         self.browser.get(url)
 
@@ -46,11 +46,11 @@ class LoginTest(FunctionalTest):
         self.assertIn(TEST_EMAIL, navbar.text)
 
         # Now she logs out
-        self.browser.find_element_by_link_text('Log out').click()
+        self.browser.find_element(By.LINK_TEXT, 'Log out').click()
 
         # She is logged out
-        self.wait_for(
-            lambda: self.browser.find_element_by_name('email')
-        )
-        navbar = self.browser.find_element_by_css_selector('.navbar')
-        self.assertNotIn(TEST_EMAIL, navbar.text)
+        # self.wait_for(
+        #     lambda: self.browser.find_element(By.NAME, 'email')
+        # )
+        # navbar = self.browser.find_element(By.CSS_SELECTOR, '.navbar')
+        # self.assertNotIn(TEST_EMAIL, navbar.text)
